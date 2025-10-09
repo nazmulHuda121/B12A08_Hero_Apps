@@ -1,8 +1,9 @@
-import { NavLink, useParams } from 'react-router';
+import { useParams } from 'react-router';
 import useApps from '../hooks/useApps';
 import { TbDownload } from 'react-icons/tb';
 import { FaStar } from 'react-icons/fa';
 import { SlLike } from 'react-icons/sl';
+import { toast } from 'react-toastify';
 
 const AppDetails = () => {
   const { id } = useParams();
@@ -11,16 +12,34 @@ const AppDetails = () => {
 
   if (loading) return <p>Loading...</p>;
   const { image, downloads, title, companyName, reviews, ratingAvg, size } =
-    singleApp;
+    singleApp || {};
+
+  const handleAddToInstallation = () => {
+    const existingList = JSON.parse(localStorage.getItem('install'));
+
+    let updatedList = [];
+    if (existingList) {
+      const isDuplicate = existingList.some((a) => a.id === singleApp.id);
+      if (isDuplicate) return toast('Already Exist');
+      updatedList = [...existingList, singleApp];
+      toast('Intallation Done');
+    } else {
+      updatedList.push(singleApp);
+      toast('Intallation Done');
+    }
+
+    localStorage.setItem('install', JSON.stringify(updatedList));
+    console.log(updatedList);
+  };
 
   return (
     <>
-      <div className="lg:flex py-22 max-w-7xl mx-auto items-start gap-14 px-7 space-y-9">
+      <div className="lg:flex pb-2 pt-22 max-w-7xl mx-auto items-start gap-14 px-7 space-y-9">
         <figure className="bg-white p-12 w-2/3 lg:w-2/7">
           <img src={image} alt="Single App" />
         </figure>
         <div className="w-full">
-          <h2 className="text-2xl font-semibold mb-1">{title}</h2>
+          <h2 className="text-2xl lg:text-3xl font-semibold mb-1">{title}</h2>
           <p className="text-gray-500 font-regular">
             Developed by <span className="linear_color">{companyName}</span>
           </p>
@@ -42,13 +61,20 @@ const AppDetails = () => {
               <span className="text-4xl font-bold">{reviews}K</span>
             </div>
           </div>
-          <NavLink
-            to={`/installation/${id}`}
+          <button
+            onClick={handleAddToInstallation}
             className="bg-[#00D390] text-white py-2.5 px-8 rounded cursor-pointer"
           >
             Install Now ({size}MB)
-          </NavLink>
+          </button>
+          {}
         </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-7">
+        <hr className="my-5 text-gray-300" />
+        <h2 className="text-2xl font-semibold">Ratings</h2>
+        <hr className="my-5 text-gray-300" />
       </div>
     </>
   );

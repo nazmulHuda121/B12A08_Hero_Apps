@@ -20,7 +20,7 @@ const Apps = () => {
       <p className="text-gray-500 mt-4 text-center">
         Explore All Apps on the Market developed by us. We code for Millions
       </p>
-      <div className="flex justify-between py-5 items-center max-w-5xl mx-auto mt-12">
+      <div className="flex justify-between py-5 items-center max-w-5xl mx-auto mt-12 px-4 lg:px-0">
         <h1 className="text-2xl">({searchApps.length}) Apps Found</h1>
         <div>
           <label className="input">

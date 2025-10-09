@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 const Home = () => {
   const { apps } = useApps();
-  const trendingApps = apps.slice(0, 8);
+  const trendingApps = apps.slice(0, 7);
   return (
     <>
       <Hero />
@@ -18,7 +18,7 @@ const Home = () => {
       <div className="flex justify-center my-12">
         <Link
           to={'/apps'}
-          className="btn bg-[linear-gradient(90deg,#632EE3,#9F62F2)] text-white px-8 py-5"
+          className="btn bg-[linear-gradient(90deg,#632EE3,#9F62F2)] text-white px-8 py-5 hover:scale-110 transition ease-in-out"
         >
           Show All
         </Link>
