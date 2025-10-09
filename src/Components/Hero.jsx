@@ -27,24 +27,30 @@ const Hero = () => {
         </div>
         <img className="mx-auto mt-9" src={img2} alt="hero_Image" />
         <div className="bg-[linear-gradient(90deg,#632EE3,#9F62F2)] p-20">
-          <h2 className="text-5xl font-bold text-white">
+          <h2 className="lg:text-5xl text-4xl font-bold text-white">
             Trusted by Millions, Built for You
           </h2>
           <section className="mt-12 text-white flex justify-evenly">
             <div className="space-y-4">
-              <p className="font-thin">Total Download</p>
-              <h2 className="text-6xl font-bold">29.5M</h2>
-              <p className="font-thin">21% more than last month</p>
+              <p className="font-thin text-xs lg:text-[16px]">Total Download</p>
+              <h2 className="text-3xl lg:text-6xl font-bold">29.5M</h2>
+              <p className="font-thin text-xs lg:text-[16px]">
+                21% more than last month
+              </p>
             </div>
             <div className="space-y-4">
-              <p className="font-thin">Total Reviews</p>
-              <h2 className="text-6xl font-bold">906K</h2>
-              <p className="font-thin">46% more than last month</p>
+              <p className="font-thin text-xs lg:text-[16px]">Total Reviews</p>
+              <h2 className="text-3xl lg:text-6xl font-bold">906K</h2>
+              <p className="font-thin text-xs lg:text-[16px]">
+                46% more than last month
+              </p>
             </div>
             <div className="space-y-4">
-              <p className="font-thin">Active Apps</p>
-              <h2 className="text-6xl font-bold">132+</h2>
-              <p className="font-thin">31 more will Launch</p>
+              <p className="font-thin text-xs lg:text-[16px]">Active Apps</p>
+              <h2 className="text-3xl lg:text-6xl font-bold">132+</h2>
+              <p className="font-thin text-xs lg:text-[16px]">
+                31 more will Launch
+              </p>
             </div>
           </section>
         </div>

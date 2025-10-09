@@ -11,7 +11,7 @@ const AppCard = ({ app }) => {
   return (
     <>
       <Link to={`/app/${id}`}>
-        <div className=" shadow-xl rounded-[8px] p-4 cursor-pointer bg-white space-y-3 hover:scale-102">
+        <div className=" shadow-xl rounded-[8px] p-4 cursor-pointer bg-white space-y-3 hover:scale-102 transition ease-in-out">
           <img className="w-36  rounded-xl" src={image} alt="" />
           <h2 className="text-xl font-semibold">{title}</h2>
           <div className="flex items-center justify-between">

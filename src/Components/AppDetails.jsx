@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { NavLink, useParams } from 'react-router';
 import useApps from '../hooks/useApps';
 import { TbDownload } from 'react-icons/tb';
 import { FaStar } from 'react-icons/fa';
@@ -9,15 +9,15 @@ const AppDetails = () => {
   const { apps, loading } = useApps();
   const singleApp = apps.find((a) => String(a.id) === id);
 
-  if (loading) return <p>Loading....</p>;
-  const { image, downloads, title, companyName, reviews, ratingAvg } =
+  if (loading) return <p>Loading...</p>;
+  const { image, downloads, title, companyName, reviews, ratingAvg, size } =
     singleApp;
 
   return (
     <>
       <div className="lg:flex py-22 max-w-7xl mx-auto items-start gap-14 px-7 space-y-9">
-        <figure className="bg-white p-12">
-          <img className="lg:w-70" src={image} alt="Single App" />
+        <figure className="bg-white p-12 w-2/3 lg:w-2/7">
+          <img src={image} alt="Single App" />
         </figure>
         <div className="w-full">
           <h2 className="text-2xl font-semibold mb-1">{title}</h2>
@@ -25,7 +25,7 @@ const AppDetails = () => {
             Developed by <span className="linear_color">{companyName}</span>
           </p>
           <hr className="my-5 text-gray-300" />
-          <div className="flex items-center gap-20">
+          <div className="flex items-center gap-20 mb-7">
             <div className="space-y-2">
               <TbDownload className="text-green-600 text-4xl" />
               <p className="text-gray-600">Downloads</p>
@@ -42,9 +42,12 @@ const AppDetails = () => {
               <span className="text-4xl font-bold">{reviews}K</span>
             </div>
           </div>
-          <button className="bg-[#00D390] text-white py-2.5 px-8 mt-7 rounded cursor-pointer">
-            Install Now (291 MB)
-          </button>
+          <NavLink
+            to={`/installation/${id}`}
+            className="bg-[#00D390] text-white py-2.5 px-8 rounded cursor-pointer"
+          >
+            Install Now ({size}MB)
+          </NavLink>
         </div>
       </div>
     </>
@@ -52,23 +55,3 @@ const AppDetails = () => {
 };
 
 export default AppDetails;
-/**
- * {
-    "image": "https://cdn-icons-png.flaticon.com/512/2111/2111463.png",
-    "title": "Instagram",
-    "companyName": "Meta Platforms, Inc.",
-    "id": 2,
-    "description": "Share your moments, follow friends, and discover global trends.",
-    "size": 58,
-    "reviews": 54,
-    "ratingAvg": 4.5,
-    "downloads": 9.8,
-    "ratings": [
-      { "name": "1 star", "count": 120000 },
-      { "name": "2 star", "count": 80000 },
-      { "name": "3 star", "count": 400000 },
-      { "name": "4 star", "count": 1100000 },
-      { "name": "5 star", "count": 3700000 }
-    ]
-  },
- */
