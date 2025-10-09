@@ -4,11 +4,13 @@ import { ErrorBoundary } from '../Components/ErrorBoundary';
 import Home from '../Pages/Home';
 import Apps from '../Pages/Apps';
 import Installation from '../Pages/Installation';
+import AppDetails from '../Components/AppDetails';
 const router = createBrowserRouter([
   {
     path: '/',
     element: <MainLayout />,
     errorElement: <ErrorBoundary />,
+    hydrateFallbackElement: <p>Loading...</p>,
     children: [
       {
         path: '/',
@@ -21,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: '/installation',
         Component: Installation,
+      },
+      {
+        path: '/app/:id',
+        Component: AppDetails,
       },
     ],
   },

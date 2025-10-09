@@ -1,22 +1,30 @@
 import React from 'react';
 import { TbDownload } from 'react-icons/tb';
+import rating from '../assets/icon-ratings.png';
+import { Link } from 'react-router';
 
 const AppCard = ({ app }) => {
-  console.log(app);
-  const { title, image, downloads, ratings } = app;
+  const { title, image, downloads, ratingAvg, id } = app;
+  // console.log(downloads);
+  // const [count, setCount] = useState(0);
+
   return (
     <>
-      <div className=" shadow-xl rounded-[8px] p-4 cursor-pointer bg-white space-y-3">
-        <img className="w-full rounded-xl" src={image} alt="" />
-        <h2 className="text-xl">{title}</h2>
-        <div>
-          <button className="flex gap-1 items-center border-1 border-gray-200 rounded text-green-400 px-2 py-1">
-            <TbDownload />
-            {downloads}
-          </button>
-          {ratings.map((rating) => rating.name[2])}
+      <Link to={`/app/${id}`}>
+        <div className=" shadow-xl rounded-[8px] p-4 cursor-pointer bg-white space-y-3 hover:scale-102">
+          <img className="w-36  rounded-xl" src={image} alt="" />
+          <h2 className="text-xl font-semibold">{title}</h2>
+          <div className="flex items-center justify-between">
+            <button className="flex gap-1 items-center border-1 border-gray-200 rounded text-green-400 px-2 py-1">
+              <TbDownload />${downloads}M
+            </button>
+            <button className="flex items-center gap-2 bg-amber-100 text-amber-500 px-1.5 rounded">
+              <img className="w-4" src={rating} alt="rating" />
+              {ratingAvg}
+            </button>
+          </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 };

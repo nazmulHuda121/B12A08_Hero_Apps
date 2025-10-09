@@ -26,7 +26,32 @@ const Hero = () => {
           </button>
         </div>
         <img className="mx-auto mt-9" src={img2} alt="hero_Image" />
-        <div className="bg-[linear-gradient(90deg,#632EE3,#9F62F2)] p-22"></div>
+        <div className="bg-[linear-gradient(90deg,#632EE3,#9F62F2)] p-20">
+          <h2 className="text-5xl font-bold text-white">
+            Trusted by Millions, Built for You
+          </h2>
+          <section className="mt-12 text-white flex justify-evenly">
+            <div className="space-y-4">
+              <p className="font-thin">Total Download</p>
+              <h2 className="text-6xl font-bold">29.5M</h2>
+              <p className="font-thin">21% more than last month</p>
+            </div>
+            <div className="space-y-4">
+              <p className="font-thin">Total Reviews</p>
+              <h2 className="text-6xl font-bold">906K</h2>
+              <p className="font-thin">46% more than last month</p>
+            </div>
+            <div className="space-y-4">
+              <p className="font-thin">Active Apps</p>
+              <h2 className="text-6xl font-bold">132+</h2>
+              <p className="font-thin">31 more will Launch</p>
+            </div>
+          </section>
+        </div>
+        <h2 className="text-4xl font-semibold mt-12">Trending Apps</h2>
+        <p className="text-gray-500 mt-4">
+          Explore All Trending Apps on the Market developed by us
+        </p>
       </div>
     </>
   );

@@ -41,10 +41,11 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <div className="flex items-center gap-2">
+          <Link to={'/'} className="flex items-center gap-2">
+            {' '}
             <img className="w-8" src="/logo.png" alt="" />
             <span className="linear_color font-bold text-[16px]">HERO.IO</span>
-          </div>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal gap-9 px-1">
@@ -60,7 +61,7 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end pr-5">
           <a className="btn bg-[linear-gradient(90deg,#632EE3,#9F62F2)] text-white">
             {' '}
             <GrGithub />
