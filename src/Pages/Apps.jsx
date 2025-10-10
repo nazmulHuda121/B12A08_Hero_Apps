@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import useApps from '../hooks/useApps';
 import AppCard from '../Components/AppCard';
+import Spinner from '../Components/Spinner';
 
 const Apps = () => {
-  const { apps } = useApps();
+  const { apps, loading } = useApps();
   const [search, setSearch] = useState('');
   const term = search.trim().toLowerCase();
   // console.log(term);
@@ -34,9 +35,15 @@ const Apps = () => {
         </div>
       </div>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 max-w-5xl mx-auto items-center justify-center my-8 px-4 lg:px-0">
-        {searchApps.map((app) => (
-          <AppCard app={app} key={app.id} />
-        ))}
+        {loading ? (
+          <Spinner />
+        ) : searchApps.length === 0 ? (
+          <p className="col-span-full text-center text-7xl text-gray-400 font-medium">
+            No apps found!
+          </p>
+        ) : (
+          searchApps.map((app) => <AppCard app={app} key={app.id} />)
+        )}
       </div>
     </>
   );

@@ -5,15 +5,30 @@ import { FaStar } from 'react-icons/fa';
 import { SlLike } from 'react-icons/sl';
 import { toast } from 'react-toastify';
 import { useState } from 'react';
+import Spinner from './Spinner';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { BarChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import { Bar, Legend } from 'recharts';
 
 const AppDetails = () => {
   const { id } = useParams();
   const { apps, loading } = useApps();
   const singleApp = apps.find((a) => String(a.id) === id);
   const [isInstalled, setIsInstalled] = useState(false);
-  if (loading) return <p>Loading...</p>;
-  const { image, downloads, title, companyName, reviews, ratingAvg, size } =
-    singleApp || {};
+
+  if (loading) return <Spinner />;
+
+  const {
+    image,
+    downloads,
+    title,
+    companyName,
+    reviews,
+    ratingAvg,
+    size,
+    ratings,
+    description,
+  } = singleApp || {};
 
   const handleAddToInstallation = () => {
     const existingList = JSON.parse(localStorage.getItem('install') || '[]');
@@ -70,6 +85,27 @@ const AppDetails = () => {
         <hr className="my-5 text-gray-300" />
         <h2 className="text-2xl font-semibold">Ratings</h2>
         <hr className="my-5 text-gray-300" />
+        <div className=" h-130 w-full">
+          <ResponsiveContainer width="100%" height={500}>
+            <BarChart
+              layout="vertical"
+              data={[...ratings].reverse()}
+              margin={{ top: 50, right: 10, left: 0, bottom: 0 }}
+              barCategoryGap="15%"
+            >
+              <XAxis type="number" />
+              <YAxis type="category" dataKey="name" />
+              <Tooltip />
+              <Legend />
+              <Bar dataKey="count" fill="#FF8811" />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+        <hr className="my-5 text-gray-300" />
+        <div className="space-y-5">
+          <h2 className="text-2xl font-semibold">Description</h2>
+          <p className="text-gray-500 font-regular">{description}</p>
+        </div>
       </div>
     </>
   );
