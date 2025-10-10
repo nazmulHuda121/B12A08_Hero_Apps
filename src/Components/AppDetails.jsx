@@ -1,6 +1,7 @@
-import { useParams } from 'react-router';
+import { Link, useParams } from 'react-router';
 import useApps from '../hooks/useApps';
 import { TbDownload } from 'react-icons/tb';
+import img from '../assets/App-Error.png';
 import { FaStar } from 'react-icons/fa';
 import { SlLike } from 'react-icons/sl';
 import { toast } from 'react-toastify';
@@ -41,6 +42,26 @@ const AppDetails = () => {
     toast('Installation Done');
     setIsInstalled(true);
   };
+
+  const app = apps.find((a) => a.id.toString() === id);
+
+  if (!app) {
+    return (
+      <div className="flex flex-col items-center gap-4 mt-20">
+        <img className="w-90" src={img} alt="Not Found" />
+        <h1 className="text-5xl text-gray-400 font-bold">App Not Found!</h1>
+        <p className="mt-4 text-gray-500">
+          The app you are looking for does not exist.
+        </p>
+        <Link
+          to={'/'}
+          className=" btn bg-[linear-gradient(90deg,#632EE3,#9F62F2)] cursor-pointer text-white mt-4"
+        >
+          Go Back!
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <>
