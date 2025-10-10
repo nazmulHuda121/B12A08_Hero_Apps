@@ -11,26 +11,19 @@ const AppDetails = () => {
   const { apps, loading } = useApps();
   const singleApp = apps.find((a) => String(a.id) === id);
   const [isInstalled, setIsInstalled] = useState(false);
-
   if (loading) return <p>Loading...</p>;
   const { image, downloads, title, companyName, reviews, ratingAvg, size } =
     singleApp || {};
 
   const handleAddToInstallation = () => {
-    const existingList = JSON.parse(localStorage.getItem('install'));
+    const existingList = JSON.parse(localStorage.getItem('install') || '[]');
+    const isDuplicate = existingList.some((a) => a.id === singleApp.id);
 
-    let updatedList = [];
-    if (existingList) {
-      const isDuplicate = existingList.some((a) => a.id === singleApp.id);
-      if (isDuplicate) return toast('Already Exist');
-      updatedList = [...existingList, singleApp];
-      toast('Intallation Done');
-    } else {
-      updatedList.push(singleApp);
-      toast('Intallation Done');
-    }
+    if (isDuplicate) return toast('Already Exist');
 
+    const updatedList = [...existingList, singleApp];
     localStorage.setItem('install', JSON.stringify(updatedList));
+    toast('Installation Done');
     setIsInstalled(true);
   };
 

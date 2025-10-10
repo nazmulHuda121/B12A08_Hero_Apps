@@ -5,8 +5,6 @@ import { Link } from 'react-router';
 
 const AppCard = ({ app }) => {
   const { title, image, downloads, ratingAvg, id } = app;
-  // console.log(downloads);
-  // const [count, setCount] = useState(0);
 
   return (
     <>
@@ -30,24 +28,3 @@ const AppCard = ({ app }) => {
 };
 
 export default AppCard;
-
-/**
- * {
-    "image": "https://i.ibb.co/fYM6vRr/googlemaps.png",
-    "title": "Google Maps",
-    "companyName": "Google LLC",
-    "id": 13,
-    "description": "Find local businesses, view maps, and get driving directions.",
-    "size": 55,
-    "reviews": 4900000,
-    "ratingAvg": 4.7,
-    "downloads": 1000000000,
-    "ratings": [
-      { "name": "1 star", "count": 60000 },
-      { "name": "2 star", "count": 40000 },
-      { "name": "3 star", "count": 150000 },
-      { "name": "4 star", "count": 600000 },
-      { "name": "5 star", "count": 4050000 }
-    ]
-  }
- */

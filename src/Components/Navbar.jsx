@@ -29,14 +29,41 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               <li>
-                <Link to={'/'}>Home</Link>
+                <NavLink
+                  to="/"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-[#7728e6] font-semibold underline border-[#7728e6]'
+                      : 'text-gray-600 hover:text-[#7728e6]'
+                  }
+                >
+                  Home
+                </NavLink>
               </li>
 
               <li>
-                <Link to={'/apps'}>Apps</Link>
+                <NavLink
+                  to="/apps"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-[#7728e6] font-semibold underline border-[#7728e6]'
+                      : 'text-gray-600 hover:text-[#7728e6]'
+                  }
+                >
+                  Apps
+                </NavLink>
               </li>
               <li>
-                <Link to={'/installation'}>Installation</Link>
+                <NavLink
+                  to="/installation"
+                  className={({ isActive }) =>
+                    isActive
+                      ? 'text-[#7728e6] font-semibold underline border-[#7728e6]'
+                      : 'text-gray-600 hover:text-[#7728e6]'
+                  }
+                >
+                  Installation
+                </NavLink>
               </li>
             </ul>
           </div>

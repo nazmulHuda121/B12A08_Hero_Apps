@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { TbDownload } from 'react-icons/tb';
-import { FaStar } from 'react-icons/fa';
+
 import InstallAppCard from '../Components/InstallAppCard';
 
 const Installation = () => {
   const [installApp, setInstallApp] = useState([]);
   const [sortOrder, setSortOrder] = useState('None');
-  console.log(installApp);
 
   useEffect(() => {
     const addedAppList = JSON.parse(localStorage.getItem('install'));
-    if (addedAppList) setInstallApp(addedAppList);
+    if (addedAppList) {
+      setInstallApp(addedAppList);
+    }
   }, []);
 
   const sortBySize = (() => {
@@ -22,6 +22,15 @@ const Installation = () => {
       return installApp;
     }
   })();
+
+  const handleRemove = (id) => {
+    const installList = JSON.parse(localStorage.getItem('install') || '[]');
+    const updatedList = installList.filter((app) => app.id !== id);
+
+    localStorage.setItem('install', JSON.stringify(updatedList));
+    setInstallApp(updatedList);
+  };
+
   return (
     <>
       <div className="max-w-5xl mx-auto my-12 px-4">
@@ -46,7 +55,11 @@ const Installation = () => {
           </label>
         </div>
         {sortBySize.map((install) => (
-          <InstallAppCard install={install} key={install.id} />
+          <InstallAppCard
+            install={install}
+            key={install.id}
+            handleRemove={handleRemove}
+          />
         ))}
       </div>
     </>

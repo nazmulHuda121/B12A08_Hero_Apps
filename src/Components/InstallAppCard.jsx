@@ -2,8 +2,8 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { TbDownload } from 'react-icons/tb';
 
-const InstallAppCard = ({ install }) => {
-  const { title, image, size, ratingAvg, downloads } = install;
+const InstallAppCard = ({ install, handleRemove }) => {
+  const { title, image, size, ratingAvg, downloads, id } = install;
   return (
     <>
       <div className="bg-white p-5 rounded-xl mt-4 flex justify-between items-center">
@@ -26,7 +26,10 @@ const InstallAppCard = ({ install }) => {
             </div>
           </div>
         </div>
-        <button className="px-5 py-2 text-white bg-green-500 rounded cursor-pointer">
+        <button
+          onClick={() => handleRemove(id)}
+          className="px-5 py-2 text-white bg-green-500 rounded cursor-pointer"
+        >
           Uninstall
         </button>
       </div>
