@@ -1,6 +1,5 @@
-import React from 'react';
 import { GrGithub } from 'react-icons/gr';
-import { Link } from 'react-router';
+import { Link, NavLink } from 'react-router';
 
 const Navbar = () => {
   return (
@@ -49,15 +48,42 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu-horizontal gap-9 px-1">
-            <li className="hover:underline hover:text-[#7728e6]">
-              <Link to={'/'}>Home</Link>
+            <li>
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#7728e6] font-semibold border-b-2 border-[#7728e6]'
+                    : 'text-gray-600 hover:text-[#7728e6]'
+                }
+              >
+                Home
+              </NavLink>
             </li>
 
-            <li className="hover:underline hover:text-[#7728e6]">
-              <Link to={'/apps'}>Apps</Link>
+            <li>
+              <NavLink
+                to="/apps"
+                className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#7728e6] font-semibold border-b-2 border-[#7728e6]'
+                    : 'text-gray-600 hover:text-[#7728e6]'
+                }
+              >
+                Apps
+              </NavLink>
             </li>
-            <li className="hover:underline hover:text-[#7728e6]">
-              <Link to={'/installation'}>Installation</Link>
+            <li>
+              <NavLink
+                to="/installation"
+                className={({ isActive }) =>
+                  isActive
+                    ? 'text-[#7728e6] font-semibold border-b-2 border-[#7728e6]'
+                    : 'text-gray-600 hover:text-[#7728e6]'
+                }
+              >
+                Installation
+              </NavLink>
             </li>
           </ul>
         </div>

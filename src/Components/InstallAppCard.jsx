@@ -3,7 +3,7 @@ import { FaStar } from 'react-icons/fa';
 import { TbDownload } from 'react-icons/tb';
 
 const InstallAppCard = ({ install }) => {
-  const { title, image, reviews, ratingAvg, downloads } = install;
+  const { title, image, size, ratingAvg, downloads } = install;
   return (
     <>
       <div className="bg-white p-5 rounded-xl mt-4 flex justify-between items-center">
@@ -21,7 +21,7 @@ const InstallAppCard = ({ install }) => {
                 <span>{ratingAvg}</span>
               </div>
               <div className="text-gray-400 flex items-center gap-1.5">
-                <span>{reviews}MB</span>
+                <span>{size}MB</span>
               </div>
             </div>
           </div>

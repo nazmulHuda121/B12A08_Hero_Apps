@@ -5,10 +5,23 @@ import InstallAppCard from '../Components/InstallAppCard';
 
 const Installation = () => {
   const [installApp, setInstallApp] = useState([]);
+  const [sortOrder, setSortOrder] = useState('None');
+  console.log(installApp);
+
   useEffect(() => {
     const addedAppList = JSON.parse(localStorage.getItem('install'));
     if (addedAppList) setInstallApp(addedAppList);
   }, []);
+
+  const sortBySize = (() => {
+    if (sortOrder === 'size-asc') {
+      return [...installApp].sort((a, b) => a.size - b.size);
+    } else if (sortOrder === 'size-desc') {
+      return [...installApp].sort((a, b) => b.size - a.size);
+    } else {
+      return installApp;
+    }
+  })();
   return (
     <>
       <div className="max-w-5xl mx-auto my-12 px-4">
@@ -18,15 +31,21 @@ const Installation = () => {
         <p className="text-gray-500 text-center mt-4 mb-9">
           Explore All Trending Apps on the Market developed by us
         </p>
-        <div className="flex justify-between mb-12">
+        <div className="flex justify-between mt-22 mb-8">
           <span>({installApp.length}) Apps Found</span>
-          <select name="short by" id="">
-            <option value="">Sort By Size</option>
-            <option value="">Sort By Name</option>
-            <option value="">Sort By Value</option>
-          </select>
+          <label className="form-control w-full max-w-[150px]">
+            <select
+              className="select select-bordered"
+              value={sortOrder}
+              onChange={(e) => setSortOrder(e.target.value)}
+            >
+              <option value="None">Sort By Size</option>
+              <option value="size-asc">Low-&gt;High</option>
+              <option value="size-desc">High-&gt;Low</option>
+            </select>
+          </label>
         </div>
-        {installApp.map((install) => (
+        {sortBySize.map((install) => (
           <InstallAppCard install={install} key={install.id} />
         ))}
       </div>

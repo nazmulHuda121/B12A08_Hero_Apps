@@ -4,11 +4,13 @@ import { TbDownload } from 'react-icons/tb';
 import { FaStar } from 'react-icons/fa';
 import { SlLike } from 'react-icons/sl';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const AppDetails = () => {
   const { id } = useParams();
   const { apps, loading } = useApps();
   const singleApp = apps.find((a) => String(a.id) === id);
+  const [isInstalled, setIsInstalled] = useState(false);
 
   if (loading) return <p>Loading...</p>;
   const { image, downloads, title, companyName, reviews, ratingAvg, size } =
@@ -29,7 +31,7 @@ const AppDetails = () => {
     }
 
     localStorage.setItem('install', JSON.stringify(updatedList));
-    console.log(updatedList);
+    setIsInstalled(true);
   };
 
   return (
@@ -65,7 +67,7 @@ const AppDetails = () => {
             onClick={handleAddToInstallation}
             className="bg-[#00D390] text-white py-2.5 px-8 rounded cursor-pointer"
           >
-            Install Now ({size}MB)
+            {isInstalled ? 'Install' : `Install Now ${size}MB`}
           </button>
           {}
         </div>
