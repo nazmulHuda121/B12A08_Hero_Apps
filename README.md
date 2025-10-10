@@ -1,16 +1,29 @@
-# React + Vite
+# HERO.IO Apps
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+HERO.IO is a modern web application platform that showcases all the applications developed by our team. Users can explore, search, and install apps easily. Each app comes with details such as its size and installation status. The platform is designed with user experience in mind, providing smooth navigation and real-time feedback using loading spinners and notifications.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project includes features like:
 
-## React Compiler
+- Dynamic app listing and searching
+- Installation management with local storage
+- Interactive UI with loading spinner for a smooth experience
+- Responsive design for desktop and mobile devices
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies Used
 
-## Expanding the ESLint configuration
+- **React.js** – Frontend library for building the user interface
+- **React Router** – For handling routing and navigation
+- **Tailwind CSS** – For styling and responsive layout
+- **LocalStorage** – For storing installation data
+- **React Icons** – For iconography
+- **Toast Notifications** – For instant feedback on user actions
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Features
+
+1. **App Listing** – Browse all available apps with real-time search filtering.
+2. **Installation** – Install apps and track installation status.
+3. **Loading States** – Show spinner during API calls and search operations.
+4. **Responsive Navbar** – Navigation bar with dropdown for mobile and horizontal menu for desktop.
+5. **User Feedback** – Toast messages for successful installation or duplicate apps.

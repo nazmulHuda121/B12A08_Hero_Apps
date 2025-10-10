@@ -1,4 +1,3 @@
-import React from 'react';
 import { TbDownload } from 'react-icons/tb';
 import rating from '../assets/icon-ratings.png';
 import { Link } from 'react-router';

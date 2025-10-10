@@ -6,7 +6,7 @@ import { Link } from 'react-router';
 
 const Home = () => {
   const { apps } = useApps();
-  const trendingApps = apps.slice(0, 7);
+  const trendingApps = apps.slice(0, 8);
   return (
     <>
       <Hero />

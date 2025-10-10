@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import InstallAppCard from '../Components/InstallAppCard';
+import { toast } from 'react-toastify';
 
 const Installation = () => {
   const [installApp, setInstallApp] = useState([]);
@@ -23,12 +24,13 @@ const Installation = () => {
     }
   })();
 
-  const handleRemove = (id) => {
+  const handleRemove = (id, title) => {
     const installList = JSON.parse(localStorage.getItem('install') || '[]');
     const updatedList = installList.filter((app) => app.id !== id);
 
     localStorage.setItem('install', JSON.stringify(updatedList));
     setInstallApp(updatedList);
+    toast(`${title}---> Uninstall Complete!`);
   };
 
   return (

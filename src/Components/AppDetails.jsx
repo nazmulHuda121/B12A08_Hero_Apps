@@ -73,11 +73,15 @@ const AppDetails = () => {
           </div>
           <button
             onClick={handleAddToInstallation}
-            className="bg-[#00D390] text-white py-2.5 px-8 rounded cursor-pointer"
+            disabled={isInstalled}
+            className={`py-2.5 px-8 rounded cursor-pointer ${
+              isInstalled
+                ? 'bg-gray-400 cursor-not-allowed'
+                : 'bg-[#00D390] text-white'
+            }`}
           >
-            {isInstalled ? 'Install' : `Install Now ${size}MB`}
+            {isInstalled ? 'Installed' : `Install Now ${size}MB`}
           </button>
-          {}
         </div>
       </div>
 
